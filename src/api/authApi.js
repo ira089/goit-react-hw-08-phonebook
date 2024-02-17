@@ -14,3 +14,16 @@ export const fetchRegister = async body => {
   setAuthHeader(data.token);
   return data;
 };
+
+export const fetchLogin = async body => {
+  const { data } = await axios.post('/users/login', body);
+  //   console.log(data);
+  setAuthHeader(data.token);
+  return data;
+};
+
+export const fetchLogOut = async () => {
+  const { data } = await axios.post('/users/logout');
+  clearAuthHeader();
+  return data;
+};

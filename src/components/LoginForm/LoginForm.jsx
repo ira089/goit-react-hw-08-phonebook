@@ -1,12 +1,24 @@
 import React from 'react';
 import styles from '../RegisterForm/RegisterForm.module.css';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from '../../redux/auth/operationsAuth';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
     console.log(form);
+    dispatch(
+      loginThunk({
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
   };
+
   return (
     <div>
       <form className={styles.form} onSubmit={handleSubmit}>

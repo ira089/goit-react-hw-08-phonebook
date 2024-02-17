@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchRegister } from '../../api/authApi.js';
+import { fetchRegister, fetchLogin, fetchLogOut } from '../../api/authApi.js';
 
 export const registerThunk = createAsyncThunk(
   'auth/register',
@@ -14,26 +14,28 @@ export const registerThunk = createAsyncThunk(
   }
 );
 
-// export const addContactsThunk = createAsyncThunk(
-//   'contacts/post',
-//   async (data, thunkAPI) => {
-//     try {
-//       const contact = fetchContactsAdd(data);
-//       return contact;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
+export const loginThunk = createAsyncThunk(
+  'auth/login',
+  async (data, thunkAPI) => {
+    try {
+      const login = await fetchLogin(data);
+      return login;
+    } catch (error) {
+      console.log(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
-// export const deleteContactsThunk = createAsyncThunk(
-//   'contacts/delete',
-//   async (id, thunkAPI) => {
-//     try {
-//       const contact = fetchContactsDelId(id);
-//       return contact;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
+export const logOutThunk = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      const logOut = await fetchLogOut();
+      return logOut;
+    } catch (error) {
+      console.log(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

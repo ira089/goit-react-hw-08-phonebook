@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThunk } from './operationsAuth';
+import { registerThunk, loginThunk, logOutThunk } from './operationsAuth';
 import {
   handleFulfilled,
   handlePending,
@@ -31,14 +31,11 @@ const handleFulfilledRegister = (state, { payload }) => {
   handleFulfilled(state);
 };
 
-const handleFulfilledAdd = (state, { payload }) => {
+const handleFulfilledLogOut = state => {
+  state.user = { name: null, email: null };
+  state.token = null;
+  state.isLoggedIn = false;
   handleFulfilled(state);
-  state.items.push(payload);
-};
-
-const handleFulfilledDel = (state, { payload }) => {
-  handleFulfilled(state);
-  state.items = state.items.filter(el => el.id !== payload.id);
 };
 
 // const handleRejected = (state, { payload }) => {
@@ -53,13 +50,13 @@ export const authSlice = createSlice({
     builder
       .addCase(registerThunk.pending, handlePending)
       .addCase(registerThunk.fulfilled, handleFulfilledRegister)
-      .addCase(registerThunk.rejected, handleRejected);
-    //   .addCase(addContactsThunk.pending, handlePending)
-    //   .addCase(addContactsThunk.fulfilled, handleFulfilledAdd)
-    //   .addCase(addContactsThunk.rejected, handleRejected)
-    //   .addCase(deleteContactsThunk.pending, handlePending)
-    //   .addCase(deleteContactsThunk.fulfilled, handleFulfilledDel)
-    //   .addCase(deleteContactsThunk.rejected, handleRejected);
+      .addCase(registerThunk.rejected, handleRejected)
+      .addCase(loginThunk.pending, handlePending)
+      .addCase(loginThunk.fulfilled, handleFulfilledRegister)
+      .addCase(loginThunk.rejected, handleRejected)
+      .addCase(logOutThunk.pending, handlePending)
+      .addCase(logOutThunk.fulfilled, handleFulfilledLogOut)
+      .addCase(logOutThunk.rejected, handleRejected);
   },
 });
 export const authReducer = authSlice.reducer;
