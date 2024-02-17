@@ -1,22 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import styles from './header.module.css';
+import AuthNav from 'components/AuthNav/AuthNav';
+import Navigation from 'components/Navigation/Navigation';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/selectorsAuth';
+import UserMenu from 'components/UserMenu/UserMenu';
 
 const Header = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <div className={styles.header}>
-      <NavLink className={styles.link} to="/">
-        Home
-      </NavLink>
-      <NavLink className={styles.link} to="/contacts">
-        Contacts
-      </NavLink>
-      <NavLink className={styles.link} to="/register">
-        Register
-      </NavLink>
-      <NavLink className={styles.link} to="/login">
-        Log In
-      </NavLink>
+    <div className={styles.headerwrap}>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </div>
   );
 };

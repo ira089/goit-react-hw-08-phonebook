@@ -1,7 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
-import { selectFilteredContacts, selectContacts } from '../../redux/selectors';
-import { getContactsThunk } from '../../redux/operations';
+import {
+  selectFilteredContacts,
+  selectContacts,
+} from '../../redux/contacts/selectors';
+import { getContactsThunk } from '../../redux/contacts/operations';
 import styles from './ContactList.module.css';
 import ContactItems from '../ContactItems/ContactItems';
 

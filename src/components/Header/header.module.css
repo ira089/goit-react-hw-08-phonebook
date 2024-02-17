@@ -1,11 +1,8 @@
 .header {
   display: flex;
   gap: 20px;
-  border: 1px solid grey;
-  padding: 20px;
-  background-color: antiquewhite;
+
   cursor: pointer;
-  margin-bottom: 20px;
 }
 .link {
   text-decoration: none;
@@ -20,4 +17,12 @@
 
 .error {
   color: red;
+}
+.headerwrap {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  padding: 20px;
+  background-color: antiquewhite;
+  margin-bottom: 20px;
 }
