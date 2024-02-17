@@ -36,8 +36,6 @@ const ContactForm = () => {
   const addTask = e => {
     e.preventDefault();
     if (isDublicate(name)) {
-      setName('');
-      setPhone('');
       return alert(`${name} is already in contacts`);
     }
     dispatch(addContactsThunk({ name, phone }));
