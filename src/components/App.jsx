@@ -7,6 +7,8 @@ import { Layout } from 'Pages/Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { refresThunk } from '../redux/auth/operationsAuth';
 import { selectIsRefreshing } from '../redux/auth/selectorsAuth';
+import PublicRoute from './PublicRoute/PublicRoute';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 // import styles from './ContactForm/ContactForm.module.css';
 
 const ContactsPage = lazy(() => import('Pages/ContactPage/ContactPage'));
@@ -23,14 +25,19 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'ждите отета'
+    'Loading...'
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route element={<PublicRoute />}>
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="contacts" element={<ContactsPage />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

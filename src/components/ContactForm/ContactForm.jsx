@@ -7,7 +7,7 @@ import { selectContacts } from '../../redux/contacts/selectors';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const { items } = useSelector(selectContacts);
   // console.log(items);
@@ -21,7 +21,7 @@ const ContactForm = () => {
 
   const handleChangeNumber = ({ target }) => {
     const { value } = target;
-    setPhone(value);
+    setNumber(value);
   };
 
   const isDublicate = evt => {
@@ -38,9 +38,9 @@ const ContactForm = () => {
     if (isDublicate(name)) {
       return alert(`${name} is already in contacts`);
     }
-    dispatch(addContactsThunk({ name, phone }));
+    dispatch(addContactsThunk({ name, number }));
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   const contactNameId = useMemo(() => nanoid(), []);
@@ -65,8 +65,8 @@ const ContactForm = () => {
         Phone
         <input
           onChange={handleChangeNumber}
-          value={phone}
-          name="phone"
+          value={number}
+          name="number"
           id={contactNumberId}
           placeholder="Phone"
           required

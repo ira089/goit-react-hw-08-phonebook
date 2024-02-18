@@ -24,7 +24,7 @@ const ContactList = () => {
     <ContactItems
       key={item.id}
       id={item.id}
-      phone={item.phone}
+      number={item.number}
       name={item.name}
     />
   ));

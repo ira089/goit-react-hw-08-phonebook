@@ -11,9 +11,12 @@ export const registerThunk = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const register = await fetchRegister(data);
+
       return register;
     } catch (error) {
+      // console.log(error.response.data.message);
       console.log(error.message);
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -51,7 +54,7 @@ export const refresThunk = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
-      console.log(persistedToken);
+      // console.log(persistedToken);
       if (persistedToken === null) {
         return thunkAPI.rejectWithValue('Unable to fetch user');
       }
