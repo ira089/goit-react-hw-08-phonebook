@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerThunk, loginThunk, logOutThunk } from './operationsAuth';
+import {
+  registerThunk,
+  loginThunk,
+  logOutThunk,
+  refresThunk,
+} from './operationsAuth';
 import {
   handleFulfilled,
   handlePending,
@@ -42,6 +47,14 @@ const handleFulfilledLogOut = state => {
 //   state.isLoading = false;
 //   state.error = payload;
 // };
+const handleFulfilledRefrech = (state, { payload }) => {
+  state.user.name = payload.name;
+  state.user.email = payload.email;
+  // state.token = payload.token;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
+  handleFulfilled(state);
+};
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -56,7 +69,17 @@ export const authSlice = createSlice({
       .addCase(loginThunk.rejected, handleRejected)
       .addCase(logOutThunk.pending, handlePending)
       .addCase(logOutThunk.fulfilled, handleFulfilledLogOut)
-      .addCase(logOutThunk.rejected, handleRejected);
+      .addCase(logOutThunk.rejected, handleRejected)
+      .addCase(refresThunk.pending, state => {
+        state.isRefreshing = true;
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(refresThunk.fulfilled, handleFulfilledRefrech)
+      .addCase(refresThunk.rejected, state => {
+        state.isRefreshing = false;
+        state.isLoading = false;
+      });
   },
 });
 export const authReducer = authSlice.reducer;

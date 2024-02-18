@@ -1,5 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchRegister, fetchLogin, fetchLogOut } from '../../api/authApi.js';
+import {
+  fetchRegister,
+  fetchLogin,
+  fetchLogOut,
+  fetchRefresh,
+} from '../../api/authApi.js';
 
 export const registerThunk = createAsyncThunk(
   'auth/register',
@@ -35,6 +40,25 @@ export const logOutThunk = createAsyncThunk(
       return logOut;
     } catch (error) {
       console.log(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refresThunk = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      console.log(persistedToken);
+      if (persistedToken === null) {
+        return thunkAPI.rejectWithValue('Unable to fetch user');
+      }
+      const refresh = await fetchRefresh(persistedToken);
+      return refresh;
+    } catch (error) {
+      console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

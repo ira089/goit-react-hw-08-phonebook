@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import React from 'react';
 
 import HomePage from 'Pages/Home/HomePage';
 import { Layout } from 'Pages/Layout/Layout';
+import { useDispatch, useSelector } from 'react-redux';
+import { refresThunk } from '../redux/auth/operationsAuth';
+import { selectIsRefreshing } from '../redux/auth/selectorsAuth';
 // import styles from './ContactForm/ContactForm.module.css';
-// import ContactForm from './ContactForm/ContactForm';
-// import ContactList from './ContactList/ContactList';
-// import Filter from './ContactList/Filter';
 
 const ContactsPage = lazy(() => import('Pages/ContactPage/ContactPage'));
 const Login = lazy(() => import('Pages/Login/Login'));
@@ -15,7 +15,16 @@ const Register = lazy(() => import('Pages/Register/Register'));
 const NotFoundPage = lazy(() => import('../Pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refresThunk());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    'ждите отета'
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
