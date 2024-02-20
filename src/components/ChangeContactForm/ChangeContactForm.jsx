@@ -60,10 +60,6 @@ const ChangeContactForm = ({ id, nameChange, numberChange, close }) => {
         ></input>
       </label>
       <ButtonSubmit>Change contact</ButtonSubmit>
-
-      {/* <button type="submit" className={styles.btn}>
-        Change contact
-      </button> */}
     </form>
   );
 };
