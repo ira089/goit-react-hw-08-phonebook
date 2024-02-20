@@ -2,7 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { deleteContactsThunk } from '../../redux/contacts/operations';
 // import styles from '../ContactList/ContactList.module.css';
-import { Button } from 'components/Button/Button';
+import { ButtonGroup, Button } from '@chakra-ui/react';
+// import { Button } from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
 
 const ContactItems = ({ name, number, id }) => {
@@ -32,8 +33,26 @@ const ContactItems = ({ name, number, id }) => {
     <>
       <li key={id} id={id}>
         {name}: {number}{' '}
-        <Button onClick={() => onDeleteContact(id)}>Delete</Button>
-        <Button onClick={() => onChangeContact(id)}>Change</Button>
+        <ButtonGroup variant="outline" spacing="2">
+          <Button
+            colorScheme="teal"
+            variant="solid"
+            size="xs"
+            onClick={() => onDeleteContact(id)}
+            type="button"
+          >
+            Delete
+          </Button>
+          <Button
+            colorScheme="teal"
+            variant="solid"
+            size="xs"
+            onClick={() => onChangeContact(id)}
+            type="button"
+          >
+            Change
+          </Button>
+        </ButtonGroup>
       </li>
       {modalOpen && (
         <Modal close={closeModal} id={id} name={name} number={number} />

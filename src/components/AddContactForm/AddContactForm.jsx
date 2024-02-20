@@ -4,7 +4,8 @@ import { addContactsThunk } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/contacts/selectors';
 import { nanoid } from 'nanoid';
 import { ButtonSubmit } from 'components/Button/Button';
-import styles from './ContactForm.module.css';
+import { Input } from '@chakra-ui/react';
+import styles from './AddContactForm.module.css';
 
 const AddContactForm = () => {
   const [name, setName] = useState('');
@@ -50,27 +51,31 @@ const AddContactForm = () => {
     <form onSubmit={addTask} className={styles.formWrap}>
       <label htmlFor={contactNameId} className={styles.formItem}>
         Name
-        <input
+        <Input
+          isInvalid
+          errorBorderColor="aquamarine"
+          placeholder="Name"
           onChange={handleChangeName}
           value={name}
           name="name"
           required
           id={contactNameId}
-          placeholder="Name"
           type="text"
-        ></input>
+        />
       </label>
 
       <label htmlFor={contactNumberId} className={styles.formItem}>
         Phone
-        <input
+        <Input
+          isInvalid
+          errorBorderColor="aquamarine"
           onChange={handleChangeNumber}
           value={number}
           name="number"
           id={contactNumberId}
           placeholder="Phone"
           required
-        ></input>
+        />
       </label>
       <ButtonSubmit>Add contact</ButtonSubmit>
     </form>

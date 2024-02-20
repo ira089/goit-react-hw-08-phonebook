@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeContactsThunk } from '../../redux/contacts/operations';
 import { ButtonSubmit } from 'components/Button/Button';
-import styles from '../ContactForm/ContactForm.module.css';
+import { Input, Stack } from '@chakra-ui/react';
+import styles from '../AddContactForm/AddContactForm.module.css';
 // import { selectContacts } from '../../redux/contacts/selectors';
 // import { nanoid } from '@reduxjs/toolkit';
 
@@ -36,32 +37,64 @@ const ChangeContactForm = ({ id, nameChange, numberChange, close }) => {
 
   //   const contactNameId = useMemo(() => nanoid(), []);
   //   const contactNumberId = useMemo(() => nanoid(), []);
-
   return (
     <form onSubmit={changeContact} className={styles.formWrap}>
-      <label className={styles.formItem}>
-        Name
-        <input
-          onChange={handleChangeName}
-          value={name}
-          name="name"
-          type="text"
-          autoComplete="off"
-        ></input>
-      </label>
-
-      <label className={styles.formItem}>
-        Phone
-        <input
-          onChange={handleChangeNumber}
-          value={number}
-          name="number"
-          autoComplete="off"
-        ></input>
-      </label>
+      <Stack spacing={4}>
+        <label>
+          Name
+          <Input
+            variant="outline"
+            isInvalid
+            errorBorderColor="aquamarine"
+            onChange={handleChangeName}
+            value={name}
+            name="name"
+            type="text"
+            autoComplete="off"
+          />
+        </label>
+        <label>
+          Phone
+          <Input
+            variant="outline"
+            isInvalid
+            errorBorderColor="aquamarine"
+            onChange={handleChangeNumber}
+            value={number}
+            name="number"
+            autoComplete="off"
+          />
+        </label>
+      </Stack>
       <ButtonSubmit>Change contact</ButtonSubmit>
     </form>
   );
+
+  // return (
+  //   <form onSubmit={changeContact} className={styles.formWrap}>
+  //     <label className={styles.formItem}>
+  //       Name
+  //       <input
+  // onChange={handleChangeName}
+  // value={name}
+  // name="name"
+  // type="text"
+  // autoComplete="off"
+  //       ></input>
+  //     </label>
+
+  //     <label className={styles.formItem}>
+  //       Phone
+  //       <input
+  //   onChange={handleChangeNumber}
+  //   value={number}
+  //   name="number"
+  //   autoComplete="off"
+  // ></input>
+  //     </label>
+  //     <ButtonSubmit>Change contact</ButtonSubmit>
+  //   </form>
+  // );
 };
 
 export default ChangeContactForm;
