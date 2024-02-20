@@ -20,15 +20,6 @@ const initialState = {
   error: null,
 };
 
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-
-// const handleFulfilled = state => {
-//   state.isLoading = false;
-//   state.error = null;
-// };
-
 const handleFulfilledRegister = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.token;
@@ -43,14 +34,9 @@ const handleFulfilledLogOut = state => {
   handleFulfilled(state);
 };
 
-// const handleRejected = (state, { payload }) => {
-//   state.isLoading = false;
-//   state.error = payload;
-// };
 const handleFulfilledRefrech = (state, { payload }) => {
   state.user.name = payload.name;
   state.user.email = payload.email;
-  // state.token = payload.token;
   state.isLoggedIn = true;
   state.isRefreshing = false;
   handleFulfilled(state);

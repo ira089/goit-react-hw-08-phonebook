@@ -1,17 +1,17 @@
 import { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContactsThunk } from '../../redux/contacts/operations';
-import { nanoid } from 'nanoid';
-import styles from './ContactForm.module.css';
 import { selectContacts } from '../../redux/contacts/selectors';
+import { nanoid } from 'nanoid';
+import { ButtonSubmit } from 'components/Button/Button';
+import styles from './ContactForm.module.css';
 
-const ContactForm = () => {
+const AddContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const { items } = useSelector(selectContacts);
   // console.log(items);
-  // arr
   const dispatch = useDispatch();
 
   const handleChangeName = ({ target }) => {
@@ -72,12 +72,9 @@ const ContactForm = () => {
           required
         ></input>
       </label>
-
-      <button type="submit" className={styles.btn}>
-        Add contact
-      </button>
+      <ButtonSubmit>Add contact</ButtonSubmit>
     </form>
   );
 };
 
-export default ContactForm;
+export default AddContactForm;

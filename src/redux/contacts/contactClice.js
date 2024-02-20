@@ -1,18 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addContactsThunk,
+  changeContactsThunk,
   deleteContactsThunk,
   getContactsThunk,
 } from './operations';
+import {
+  handleFulfilled,
+  handlePending,
+  handleRejected,
+} from 'functions/functions';
 
-const handlePending = state => {
-  state.isLoading = true;
-};
+// const handlePending = state => {
+//   state.isLoading = true;
+// };
 
-const handleFulfilled = state => {
-  state.isLoading = false;
-  state.error = null;
-};
+// const handleFulfilled = state => {
+//   state.isLoading = false;
+//   state.error = null;
+// };
 
 const handleFulfilledGet = (state, { payload }) => {
   handleFulfilled(state);
@@ -29,9 +35,15 @@ const handleFulfilledDel = (state, { payload }) => {
   state.items = state.items.filter(el => el.id !== payload.id);
 };
 
-const handleRejected = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = payload;
+// const handleRejected = (state, { payload }) => {
+//   state.isLoading = false;
+//   state.error = payload;
+// };
+
+const handleFulfilledChange = (state, { payload }) => {
+  handleFulfilled(state);
+  state.items = state.items.filter(el => el.id !== payload.id);
+  state.items.push(payload);
 };
 
 export const contactSlice = createSlice({
@@ -52,7 +64,10 @@ export const contactSlice = createSlice({
       .addCase(addContactsThunk.rejected, handleRejected)
       .addCase(deleteContactsThunk.pending, handlePending)
       .addCase(deleteContactsThunk.fulfilled, handleFulfilledDel)
-      .addCase(deleteContactsThunk.rejected, handleRejected);
+      .addCase(deleteContactsThunk.rejected, handleRejected)
+      .addCase(changeContactsThunk.pending, handlePending)
+      .addCase(changeContactsThunk.fulfilled, handleFulfilledChange)
+      .addCase(changeContactsThunk.rejected, handleRejected);
   },
 });
 
