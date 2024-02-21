@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from '../RegisterForm/RegisterForm.module.css';
+// import styles from '../RegisterForm/RegisterForm.module.css';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operationsAuth';
+import { Input, Button, Box } from '@chakra-ui/react';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -20,20 +21,45 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <Box p={8} w={380}>
+      <form onSubmit={handleSubmit}>
         {/* // autoComplete="off"> */}
-        <label className={styles.label}>
+        <label>
           Email
-          <input type="email" name="email" />
+          <Input
+            isInvalid
+            errorBorderColor=" darkturquoise"
+            placeholder="Email"
+            type="email"
+            name="email"
+            required
+          />
+          {/* <input type="email" name="email" /> */}
         </label>
-        <label className={styles.label}>
+        <label>
           Password
-          <input type="password" name="password" />
+          <Input
+            isInvalid
+            errorBorderColor=" aquamarine"
+            placeholder="Password"
+            type="password"
+            name="password"
+            required
+          />
+          {/* <input type="password" name="password" /> */}
         </label>
-        <button type="submit">Log In</button>
+        <Button
+          mt={6}
+          colorScheme="teal"
+          variant="solid"
+          size="md"
+          type="submit"
+        >
+          Log In
+        </Button>
+        {/* <button type="submit">Log In</button> */}
       </form>
-    </div>
+    </Box>
   );
 };
 

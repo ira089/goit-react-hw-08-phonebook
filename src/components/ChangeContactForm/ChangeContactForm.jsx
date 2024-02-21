@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { changeContactsThunk } from '../../redux/contacts/operations';
 import { ButtonSubmit } from 'components/Button/Button';
 import { Input, Stack } from '@chakra-ui/react';
-import styles from '../AddContactForm/AddContactForm.module.css';
+// import styles from '../AddContactForm/AddContactForm.module.css';
 // import { selectContacts } from '../../redux/contacts/selectors';
 // import { nanoid } from '@reduxjs/toolkit';
 
@@ -38,8 +38,8 @@ const ChangeContactForm = ({ id, nameChange, numberChange, close }) => {
   //   const contactNameId = useMemo(() => nanoid(), []);
   //   const contactNumberId = useMemo(() => nanoid(), []);
   return (
-    <form onSubmit={changeContact} className={styles.formWrap}>
-      <Stack spacing={4}>
+    <form onSubmit={changeContact}>
+      <Stack spacing={4} mb={4}>
         <label>
           Name
           <Input

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import styles from './RegisterForm.module.css';
+// import styles from './RegisterForm.module.css';
 import { registerThunk } from '../../redux/auth/operationsAuth';
+import { Input, Button, Box } from '@chakra-ui/react';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -21,24 +22,57 @@ const RegisterForm = () => {
   };
 
   return (
-    <div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <Box p={8} w={380}>
+      <form onSubmit={handleSubmit}>
         {/* // autoComplete="off"> */}
-        <label className={styles.label}>
+        <label>
           Username
-          <input type="text" name="name" />
+          <Input
+            isInvalid
+            errorBorderColor=" darkturquoise"
+            placeholder="Username"
+            type="text"
+            name="name"
+            required
+          />
+          {/* <input type="text" name="name" /> */}
         </label>
-        <label className={styles.label}>
+        <label>
           Email
-          <input type="email" name="email" />
+          <Input
+            isInvalid
+            errorBorderColor=" darkturquoise"
+            placeholder="Email"
+            type="email"
+            name="email"
+            required
+          />
+          {/* <input type="email" name="email" /> */}
         </label>
-        <label className={styles.label}>
+        <label>
           Password
-          <input type="password" name="password" />
+          <Input
+            isInvalid
+            errorBorderColor=" aquamarine"
+            placeholder="Password"
+            type="password"
+            name="password"
+            required
+          />
+          {/* <input type="password" name="password" /> */}
         </label>
-        <button type="submit">Register</button>
+        <Button
+          mt={6}
+          colorScheme="teal"
+          variant="solid"
+          size="md"
+          type="submit"
+        >
+          Register
+        </Button>
+        {/* <button type="submit">Register</button> */}
       </form>
-    </div>
+    </Box>
   );
 };
 
