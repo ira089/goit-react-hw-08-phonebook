@@ -21,6 +21,6 @@ export const fetchContactsDelId = async id => {
 
 export const fetchContactsChange = async (id, body) => {
   const { data } = await axios.patch(`${BASE_URL}/contacts/${id}`, body);
-  console.log(data);
+  // console.log(data);
   return data;
 };

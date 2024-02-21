@@ -9,7 +9,7 @@ const LoginForm = () => {
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-    console.log(form);
+    // console.log(form);
     dispatch(
       loginThunk({
         email: form.elements.email.value,
