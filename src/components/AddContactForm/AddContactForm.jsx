@@ -48,8 +48,8 @@ const AddContactForm = () => {
   const contactNumberId = useMemo(() => nanoid(), []);
 
   return (
-    <form onSubmit={addTask} className={styles.formWrap}>
-      <label htmlFor={contactNameId} className={styles.formItem}>
+    <form onSubmit={addTask}>
+      <label htmlFor={contactNameId}>
         Name
         <Input
           isInvalid
@@ -67,6 +67,7 @@ const AddContactForm = () => {
       <label htmlFor={contactNumberId} className={styles.formItem}>
         Phone
         <Input
+          mb={4}
           isInvalid
           errorBorderColor="aquamarine"
           onChange={handleChangeNumber}
