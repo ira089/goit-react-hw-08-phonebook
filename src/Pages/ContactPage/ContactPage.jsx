@@ -1,5 +1,4 @@
 import React from 'react';
-// import styles from '../../components/AddContactForm/AddContactForm.module.css';
 import AddContactForm from 'components/AddContactForm/AddContactForm';
 import Filter from 'components/ContactList/Filter';
 import ContactList from 'components/ContactList/ContactList';

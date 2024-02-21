@@ -1,9 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { deleteContactsThunk } from '../../redux/contacts/operations';
-// import styles from '../ContactList/ContactList.module.css';
 import { ButtonGroup, Button } from '@chakra-ui/react';
-// import { Button } from 'components/Button/Button';
 import Modalwindow from 'components/Modal/Modal';
 
 const ContactItems = ({ name, number, id }) => {
@@ -25,8 +23,7 @@ const ContactItems = ({ name, number, id }) => {
   };
 
   const onChangeContact = id => {
-    console.log(id);
-
+    // console.log(id);
     showModal();
   };
 
@@ -60,19 +57,6 @@ const ContactItems = ({ name, number, id }) => {
       )}
     </>
   );
-
-  // return (
-  //   <li key={id} id={id}>
-  //     {name}: {number}{' '}
-  //     <button
-  //       className={styles.btnDel}
-  //       onClick={() => onDeleteContact(id)}
-  //       type="button"
-  //     >
-  //       Delete
-  //     </button>
-  //   </li>
-  // );
 };
 
 export default ContactItems;

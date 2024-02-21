@@ -10,7 +10,7 @@ const clearAuthHeader = () => {
 };
 export const fetchRegister = async body => {
   const { data } = await axios.post('/users/signup', body);
-  console.log(data);
+  // console.log(data);
   setAuthHeader(data.token);
   return data;
 };

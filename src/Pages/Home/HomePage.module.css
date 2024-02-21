@@ -1,0 +1,10 @@
+.wrap {
+  padding: 20px;
+  background-image: url('../../img/6532.webp');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+}

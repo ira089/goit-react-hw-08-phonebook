@@ -11,7 +11,6 @@ import { refresThunk } from '../redux/auth/operationsAuth';
 import { selectIsRefreshing } from '../redux/auth/selectorsAuth';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-// import styles from './ContactForm/ContactForm.module.css';
 
 const ContactsPage = lazy(() => import('Pages/ContactPage/ContactPage'));
 const Login = lazy(() => import('Pages/Login/Login'));

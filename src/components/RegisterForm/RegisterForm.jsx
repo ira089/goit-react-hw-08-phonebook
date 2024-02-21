@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import styles from './RegisterForm.module.css';
 import { registerThunk } from '../../redux/auth/operationsAuth';
 import { Input, Button, Box } from '@chakra-ui/react';
 
@@ -35,7 +34,6 @@ const RegisterForm = () => {
             name="name"
             required
           />
-          {/* <input type="text" name="name" /> */}
         </label>
         <label>
           Email
@@ -47,7 +45,6 @@ const RegisterForm = () => {
             name="email"
             required
           />
-          {/* <input type="email" name="email" /> */}
         </label>
         <label>
           Password
@@ -59,7 +56,6 @@ const RegisterForm = () => {
             name="password"
             required
           />
-          {/* <input type="password" name="password" /> */}
         </label>
         <Button
           mt={6}
@@ -70,7 +66,6 @@ const RegisterForm = () => {
         >
           Register
         </Button>
-        {/* <button type="submit">Register</button> */}
       </form>
     </Box>
   );

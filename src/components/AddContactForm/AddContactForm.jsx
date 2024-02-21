@@ -5,7 +5,6 @@ import { selectContacts } from '../../redux/contacts/selectors';
 import { nanoid } from 'nanoid';
 import { ButtonSubmit } from 'components/Button/Button';
 import { Input } from '@chakra-ui/react';
-import styles from './AddContactForm.module.css';
 
 const AddContactForm = () => {
   const [name, setName] = useState('');
@@ -64,7 +63,7 @@ const AddContactForm = () => {
         />
       </label>
 
-      <label htmlFor={contactNumberId} className={styles.formItem}>
+      <label htmlFor={contactNumberId}>
         Phone
         <Input
           mb={4}

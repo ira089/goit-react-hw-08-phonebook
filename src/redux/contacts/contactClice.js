@@ -11,15 +11,6 @@ import {
   handleRejected,
 } from 'functions/functions';
 
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-
-// const handleFulfilled = state => {
-//   state.isLoading = false;
-//   state.error = null;
-// };
-
 const handleFulfilledGet = (state, { payload }) => {
   handleFulfilled(state);
   state.items = payload;
@@ -34,11 +25,6 @@ const handleFulfilledDel = (state, { payload }) => {
   handleFulfilled(state);
   state.items = state.items.filter(el => el.id !== payload.id);
 };
-
-// const handleRejected = (state, { payload }) => {
-//   state.isLoading = false;
-//   state.error = payload;
-// };
 
 const handleFulfilledChange = (state, { payload }) => {
   handleFulfilled(state);

@@ -23,7 +23,7 @@ export const addContactsThunk = createAsyncThunk(
   'contacts/post',
   async (data, thunkAPI) => {
     try {
-      console.log(data);
+      // console.log(data);
       const contact = fetchContactsAdd(data);
       return contact;
     } catch (error) {
@@ -37,7 +37,7 @@ export const deleteContactsThunk = createAsyncThunk(
   'contacts/delete',
   async (id, thunkAPI) => {
     try {
-      console.log(id);
+      // console.log(id);
       const contact = fetchContactsDelId(id);
       return contact;
     } catch (error) {
@@ -51,10 +51,10 @@ export const changeContactsThunk = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const id = data.id;
-      console.log(id);
+      // console.log(id);
       const dataChange = { ...data };
       delete dataChange.id;
-      console.log(dataChange);
+      // console.log(dataChange);
       const contactChange = fetchContactsChange(id, dataChange);
       toast.success('Сontact changed!');
       return contactChange;

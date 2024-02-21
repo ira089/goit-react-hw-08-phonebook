@@ -18,7 +18,6 @@ const ContactList = () => {
 
   const itemsVisible = useSelector(selectFilteredContacts);
   // console.log(itemsVisible);
-  // Array
 
   const elements = itemsVisible.map(item => (
     <ContactItems

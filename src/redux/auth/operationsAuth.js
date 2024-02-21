@@ -15,8 +15,6 @@ export const registerThunk = createAsyncThunk(
       toast.success('Congratulations! You have successfully registered!');
       return register;
     } catch (error) {
-      // console.log(error.response.data.message);
-      // console.log(error.message);
       toast.error(`${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -44,7 +42,6 @@ export const logOutThunk = createAsyncThunk(
       const logOut = await fetchLogOut();
       return logOut;
     } catch (error) {
-      console.log(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -63,7 +60,7 @@ export const refresThunk = createAsyncThunk(
       const refresh = await fetchRefresh(persistedToken);
       return refresh;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -1,5 +1,4 @@
 import React from 'react';
-// import styles from '../RegisterForm/RegisterForm.module.css';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operationsAuth';
 import { Input, Button, Box } from '@chakra-ui/react';
@@ -23,7 +22,6 @@ const LoginForm = () => {
   return (
     <Box p={8} w={380}>
       <form onSubmit={handleSubmit}>
-        {/* // autoComplete="off"> */}
         <label>
           Email
           <Input
@@ -34,7 +32,6 @@ const LoginForm = () => {
             name="email"
             required
           />
-          {/* <input type="email" name="email" /> */}
         </label>
         <label>
           Password
@@ -46,7 +43,6 @@ const LoginForm = () => {
             name="password"
             required
           />
-          {/* <input type="password" name="password" /> */}
         </label>
         <Button
           mt={6}
@@ -57,7 +53,6 @@ const LoginForm = () => {
         >
           Log In
         </Button>
-        {/* <button type="submit">Log In</button> */}
       </form>
     </Box>
   );

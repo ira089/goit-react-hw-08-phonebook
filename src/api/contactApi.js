@@ -4,14 +4,12 @@ const BASE_URL = 'https://connections-api.herokuapp.com';
 export const fetchContactsAll = async () => {
   const { data } = await axios.get(`${BASE_URL}/contacts`);
   // console.log(data);
-  // array
   return data;
 };
 
 export const fetchContactsAdd = async body => {
   const { data } = await axios.post(`${BASE_URL}/contacts`, body);
   // console.log(data);
-  // array
   return data;
 };
 
@@ -24,6 +22,5 @@ export const fetchContactsDelId = async id => {
 export const fetchContactsChange = async (id, body) => {
   const { data } = await axios.patch(`${BASE_URL}/contacts/${id}`, body);
   console.log(data);
-
   return data;
 };
