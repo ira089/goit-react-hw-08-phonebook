@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import HomePage from 'Pages/Home/HomePage';
 import { Layout } from 'Pages/Layout/Layout';
@@ -27,20 +29,23 @@ const App = () => {
   return isRefreshing ? (
     'Loading...'
   ) : (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route element={<PublicRoute />}>
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-        </Route>
-        <Route element={<PrivateRoute />}>
-          <Route path="contacts" element={<ContactsPage />} />
-        </Route>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route element={<PublicRoute />}>
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="contacts" element={<ContactsPage />} />
+          </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+      <ToastContainer autoClose={3000} />
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import {
   fetchContactsDelId,
   fetchContactsChange,
 } from '../../api/contactApi';
+import { toast } from 'react-toastify';
 
 export const getContactsThunk = createAsyncThunk(
   'contacts/get',
@@ -26,6 +27,7 @@ export const addContactsThunk = createAsyncThunk(
       const contact = fetchContactsAdd(data);
       return contact;
     } catch (error) {
+      toast.error(`${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -54,8 +56,10 @@ export const changeContactsThunk = createAsyncThunk(
       delete dataChange.id;
       console.log(dataChange);
       const contactChange = fetchContactsChange(id, dataChange);
+      toast.success('Сontact changed!');
       return contactChange;
     } catch (error) {
+      toast.error(`${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

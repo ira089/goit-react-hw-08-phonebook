@@ -5,18 +5,19 @@ import {
   fetchLogOut,
   fetchRefresh,
 } from '../../api/authApi.js';
+import { toast } from 'react-toastify';
 
 export const registerThunk = createAsyncThunk(
   'auth/register',
   async (data, thunkAPI) => {
     try {
       const register = await fetchRegister(data);
-
+      toast.success('Congratulations! You have successfully registered!');
       return register;
     } catch (error) {
       // console.log(error.response.data.message);
-      console.log(error.message);
-
+      // console.log(error.message);
+      toast.error(`${error.message}`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -29,7 +30,8 @@ export const loginThunk = createAsyncThunk(
       const login = await fetchLogin(data);
       return login;
     } catch (error) {
-      console.log(error.message);
+      toast.error(`${error.message}`);
+      // console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
