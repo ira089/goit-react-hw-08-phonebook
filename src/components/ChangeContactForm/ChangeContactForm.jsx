@@ -12,7 +12,6 @@ const ChangeContactForm = ({ id, nameChange, numberChange, close }) => {
 
   const handleChangeName = ({ target }) => {
     const { value } = target;
-    // console.log(value);
     setName(value);
   };
 
@@ -36,6 +35,7 @@ const ChangeContactForm = ({ id, nameChange, numberChange, close }) => {
         <label>
           Name
           <Input
+            mb={3}
             variant="outline"
             isInvalid
             errorBorderColor="aquamarine"

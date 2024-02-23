@@ -18,12 +18,10 @@ const ContactItems = ({ name, number, id }) => {
   };
 
   const onDeleteContact = id => {
-    // console.log(id);
     dispatch(deleteContactsThunk(id));
   };
 
   const onChangeContact = id => {
-    // console.log(id);
     showModal();
   };
 
